@@ -9,7 +9,10 @@ spec:
   - image: nginx
     name: nginx
     securityContext:
-      readOnlyRootFilesystem: true   #Add this Security Context
+      runAsUser: 1000                      # Run the container as a specific user ID
+      capabilities:
+        add: ["NET_ADMIN"]                 # Add specific Linux capabilities
+      readOnlyRootFilesystem: true         # Mount the container's root filesystem as read-only
     volumeMounts:
     - name: cache-volume
       mountPath: /var/cache/nginx
