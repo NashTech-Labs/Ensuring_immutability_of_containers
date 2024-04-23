@@ -54,3 +54,14 @@ nginx.yaml
 
     kubectl exec -it nginx -- apt update
 
+
+Using security context in Kubernetes YAML files allows you to define security settings for Pods and containers, such as Linux capabilities, SELinux options, and more. Here's an example of how you can incorporate security context into a Kubernetes YAML file:
+
+In this example:
+
+- `runAsUser`: Specifies the user ID under which the container should run.
+- `capabilities`: Allows you to add or drop Linux capabilities for the container. In this case, it adds the `NET_ADMIN` capability.
+- `readOnlyRootFilesystem`: Mounts the container's root filesystem as read-only, preventing any write access to it.
+
+You can adjust these settings according to your specific security requirements. Remember to apply the YAML file using `kubectl apply -f filename.yaml` once you've defined the security context.
+
